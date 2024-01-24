@@ -1,0 +1,61 @@
+{
+  "$schema": "https://unpkg.com/@camunda/zeebe-element-templates-json-schema/resources/schema.json",
+  "name": "Connector concatenation",
+  "id": "ebf32956-8262-4145-a7dd-23558d51f29b",
+  "version": 1702030059125,
+  "appliesTo": [
+    "bpmn:Task"
+  ],
+  "elementType": {
+    "value": "bpmn:ServiceTask"
+  },
+  "properties": [
+    {
+      "label": "First text",
+      "description": "The first input of type String",
+      "type": "String",
+      "value": "=input1",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input1"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Second text",
+      "description": "The second input of type String",
+      "type": "String",
+      "value": "=input2",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "input2"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Result Variable",
+      "description": "Name of variable to store the response in",
+      "group": "output",
+      "type": "String",
+      "value": "concatenationResult",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "resultVariable"
+      }
+    },
+    {
+      "type": "Hidden",
+      "value": "io.camunda:concatenation-api:1",
+      "binding": {
+        "type": "zeebe:taskDefinition",
+        "property": "type"
+      }
+    }
+  ]
+}
